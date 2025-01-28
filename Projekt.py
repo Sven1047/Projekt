@@ -1,4 +1,5 @@
 import pygame
+from random import *
 pygame.init()
 
 windowsize = [400]
@@ -14,8 +15,8 @@ positions = []
 while not done:
     screen.fill(black)
 
-    if len(positions) >= 5:
-        positions.append[]
+    if len(positions) <= 5:
+        positions.append([[randint(0,399),randint(0,399)], 10000])
 
     current_i = 0
     for i in positions:
