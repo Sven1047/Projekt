@@ -16,7 +16,7 @@ while not done:
     screen.fill(black)
 
     if len(positions) <= 5:
-        positions.append([[randint(0,399),randint(0,399)], 10000])
+        positions.append([[randint(0,399),randint(0,399)], 10000000000000000000000000000000000])
 
     current_i = 0
     for i in positions:
@@ -27,7 +27,6 @@ while not done:
         if i[1] == 0:
             positions.pop(current_i)
         current_i += 1
-        print(positions)
 
     for pos in positions:
         pygame.draw.circle(screen, white, pos[0] , 10)
@@ -43,7 +42,12 @@ while not done:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == pygame.BUTTON_LEFT:
                 mouse_pos = pygame.mouse.get_pos()
-                mouse_pos = [[mouse_pos[0],mouse_pos[1]],10000]
-                positions.append(mouse_pos)
+                mouse_pos = [mouse_pos[0], mouse_pos[1]]
+                current_i = 0
+                for i in positions:
+                    if i[0][0] + 10 >= mouse_pos[0] >= i[0][0] - 10 and i[0][1] + 10 >= mouse_pos[1] >= i[0][1] - 10:
+                        positions.pop(current_i)
+                        current_i += 1
+
 
 pygame.quit()
