@@ -11,20 +11,21 @@ done = False
 black = [0,0,0]
 white = [255,255,255]
 positions = []
+counter = 0
 
 while not done:
     screen.fill(black)
 
-    while len(positions) < 5:
-        positions.append([[randint(0,399),randint(0,399)], 10000000000000000000000000000000000])
+    while len(positions) < 1:
+        positions.append([[randint(0,399),randint(0,399)], randint(5000, 8000), [1,0]])
 
     for pos in positions:
+        pygame.draw.circle(screen, white, pos[0], 10)
         pos[1] = pos[1] - 1 # lebensdauer
         if pos[1] == 0:
             positions.remove(pos)
-
-    for pos in positions:
-        pygame.draw.circle(screen, white, pos[0] , 10)
+            pygame.quit()
+        pos[0][0] = pos[0][0] + pos[2][0]
 
     pygame.display.flip()
 
@@ -41,6 +42,7 @@ while not done:
                 for pos in positions:
                     if (pos[0][0] + 10) >= mouse_pos[0] >= (pos[0][0] - 10) and (pos[0][1] + 10) >= mouse_pos[1] >= (pos[0][1] - 10):
                         positions.remove(pos)
-
+                        counter += 1
+                        print(counter)
 
 pygame.quit()
