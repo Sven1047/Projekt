@@ -25,7 +25,6 @@ while not done:
         if pos[1] == 0:
             positions.remove(pos)
             pygame.quit()
-        pos[0][0] = pos[0][0] + pos[2][0]
 
     pygame.display.flip()
 
