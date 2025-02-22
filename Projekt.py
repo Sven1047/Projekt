@@ -21,27 +21,27 @@ while not done:
     while len(positions) < 1:
         direct = randint(1,100)
         if direct <= 50:
-            positions.append([[randint(0, 399), randint(0, 399)], randint(5000, 8000), [0, 0]])
+            positions.append([[randint(0, 399), randint(0, 399)], randint(5000, 8000), [0, 0], 1])
         elif 50 < direct <=90:
             direct = randint(1,100)
             if direct <= 25:
-                positions.append([[randint(0, 399), randint(0, 399)], randint(5000, 8000), [.01, 0]])
+                positions.append([[randint(0, 399), randint(0, 399)], randint(5000, 8000), [.01, 0], 2])
             elif 25 < direct <= 50:
-                positions.append([[randint(0, 399), randint(0, 399)], randint(5000, 8000), [0, .01]])
+                positions.append([[randint(0, 399), randint(0, 399)], randint(5000, 8000), [0, .01], 2])
             elif 50 < direct <= 75:
-                positions.append([[randint(0, 399), randint(0, 399)], randint(5000, 8000), [- .01, 0]])
+                positions.append([[randint(0, 399), randint(0, 399)], randint(5000, 8000), [- .01, 0], 2])
             elif 75 < direct:
-                positions.append([[randint(0, 399), randint(0, 399)], randint(5000, 8000), [0, -.01]])
+                positions.append([[randint(0, 399), randint(0, 399)], randint(5000, 8000), [0, -.01], 2])
         elif 90 < direct <= 100:
             direct = randint(1, 100)
             if direct <= 25:
-                positions.append([[randint(0, 399), randint(0, 399)], randint(5000, 8000), [.01, .01]])
+                positions.append([[randint(0, 399), randint(0, 399)], randint(5000, 8000), [.01, .01], 2])
             elif 25 < direct <= 50:
-                positions.append([[randint(0, 399), randint(0, 399)], randint(5000, 8000), [-.01, .01]])
+                positions.append([[randint(0, 399), randint(0, 399)], randint(5000, 8000), [-.01, .01], 2])
             elif 50 < direct <= 75:
-                positions.append([[randint(0, 399), randint(0, 399)], randint(5000, 8000), [.01, -.01]])
+                positions.append([[randint(0, 399), randint(0, 399)], randint(5000, 8000), [.01, -.01], 2])
             elif 75 < direct:
-                positions.append([[randint(0, 399), randint(0, 399)], randint(5000, 8000), [-.01, -.01]])
+                positions.append([[randint(0, 399), randint(0, 399)], randint(5000, 8000), [-.01, -.01], 2])
 #        positions.append([[randint(0,399),randint(0,399)], randint(5000, 8000), [.01,0]])
 
     for pos in positions:
@@ -68,7 +68,8 @@ while not done:
                 for pos in positions:
                     if (pos[0][0] + 10) >= mouse_pos[0] >= (pos[0][0] - 10) and (pos[0][1] + 10) >= mouse_pos[1] >= (pos[0][1] - 10):
                         positions.remove(pos)
-                        counter += 1
-                        print(counter)
+                        counter += pos[3]
+
+print("Deine Punktzahl ist:", counter)
 
 pygame.quit()
